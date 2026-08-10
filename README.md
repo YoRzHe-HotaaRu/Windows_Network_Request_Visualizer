@@ -1,16 +1,20 @@
 # Network Visualizer
 
-### See where every connection from your PC goes — on a living 3D globe.
+### See where every connection from your PC goes — on a live world map.
 
 [![Platform](https://img.shields.io/badge/platform-Windows%2010%2F11-0078D4?style=flat-square)](#system-requirements)
-[![Stack](https://img.shields.io/badge/stack-Tauri%202%20%7C%20React%20%7C%20Rust-22d3ee?style=flat-square)](#tech-stack)
-[![Capture](https://img.shields.io/badge/capture-Npcap%20full%20traffic-a78bfa?style=flat-square)](#architecture)
+[![Stack](https://img.shields.io/badge/stack-Tauri%202%20%7C%20React%20%7C%20Rust-f0a202?style=flat-square)](#tech-stack)
+[![Capture](https://img.shields.io/badge/capture-connections%20%2B%20geo-7eb8da?style=flat-square)](#architecture)
 [![Docs](https://img.shields.io/badge/docs-proposal%20%7C%20SRS%20%7C%20architecture-e2e8f0?style=flat-square)](docs/00-DOCUMENT-INDEX.md)
-[![Status](https://img.shields.io/badge/status-documentation%20baseline-fbbf24?style=flat-square)](#project-status)
+[![Status](https://img.shields.io/badge/status-running-8fbc8f?style=flat-square)](#project-status)
 
-**Network Visualizer** is a Windows desktop dashboard that captures your machine’s network traffic, attributes it to processes, geolocates destinations, and draws **silky animated arcs** from your location to the world.
+<p align="center">
+  <img src="docs/images/dashboard.png" alt="Network Visualizer dashboard — world map arcs, live feed, telemetry" width="100%" />
+</p>
 
-> Local-first. Ops-center aesthetic. Built for clarity — not for dumping raw PCAP into your eyeballs.
+**Network Visualizer** is a Windows desktop dashboard that captures your machine’s network traffic, attributes it to processes, geolocates destinations, and draws **animated arcs** from your location to the world.
+
+> Local-first. Tactical ops aesthetic. Built for clarity — not for dumping raw PCAP into your eyeballs.
 
 ---
 
@@ -42,34 +46,36 @@
 | **Flow aggregation** | 5-tuple flows with bytes, packets, and live rates |
 | **Process attribution** | Map sockets → PID → process name via Windows IP Helper |
 | **Offline GeoIP** | MaxMind GeoLite2-City → city, country, coordinates |
-| **3D globe dashboard** | `react-globe.gl` arcs, pulses, idle auto-rotate |
+| **World map dashboard** | Natural Earth map, animated flight arcs, zoom/pan |
 | **Live ops panels** | KPIs, filters, feed, pinned detail, bottom charts |
 | **Local-first privacy** | No payload storage by default; no cloud telemetry in v1 |
 
 ---
 
-## Screenshots / UI layout
+## Screenshots
 
-> *Screenshots will be added after Phase 1 (globe visual spike). Layout contract:*
+### Live dashboard
+
+![Network Visualizer dashboard](docs/images/dashboard.png)
+
+*Connection-table mode with process attribution, geo routes from origin (Kuala Lumpur), live feed, and throughput strip.*
+
+### Layout
 
 ```text
 ┌────────────────────────────────────────────────────────────────────┐
-│  NETWORK VISUALIZER              ● LIVE          [Pause] [Settings]│
+│  NETWORK VISUALIZER          ● STATUS        [Pause] [Start] …     │
 ├──────────────┬───────────────────────────────────┬─────────────────┤
-│  KPIs        │                                   │  Live feed      │
-│  Active flows│         3D WORLD GLOBE            │  process · IP   │
-│  Mbps ↑ ↓    │     home ──animated arc──► dest   │  city · rate    │
-│              │                                   │                 │
-│  Filters     │      destination pulses           │  Flow detail    │
-│  process     │      drag to orbit                │  (pinned)       │
-│  country     │                                   │                 │
-│  TCP/UDP     │                                   │                 │
+│  Telemetry   │                                   │  Live feed      │
+│  Flows / geo │      WORLD MAP (zoom · pan)       │  app · city     │
+│  Filters     │   home ──animated arc──► dest     │  IP · rate      │
+│              │                                   │  Selection      │
 ├──────────────┴───────────────────────────────────┴─────────────────┤
 │  Top processes  │  Top countries  │  Throughput sparkline          │
 └────────────────────────────────────────────────────────────────────┘
 ```
 
-**Visual language:** deep navy/black base, cyan–violet accents, frosted glass panels, monospace for IPs/ports, smooth list motion.
+**Visual language:** sharp-edged charcoal panels, solid amber signal color, ice secondary, IBM Plex typography, monospace for IPs/ports.
 
 ---
 
