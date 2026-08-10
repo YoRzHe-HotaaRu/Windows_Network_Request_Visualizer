@@ -1,5 +1,35 @@
 {
+  "name": "network-visualizer",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "tauri": "tauri",
+    "docs:docx": "node scripts/generate-all-docs.mjs && node scripts/generate-project-docs.mjs",
+    "docs:pdf": "python scripts/generate-all-docs-pdf.py && python scripts/generate-project-docs-pdf.py",
+    "docs": "npm run docs:docx && npm run docs:pdf"
+  },
   "dependencies": {
-    "docx": "^9.7.1"
+    "@tauri-apps/api": "^2.5.0",
+    "@tauri-apps/plugin-shell": "^2.2.1",
+    "framer-motion": "^12.6.3",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-globe.gl": "^2.33.2",
+    "three": "^0.175.0",
+    "zustand": "^5.0.3"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^2.5.0",
+    "@types/react": "^18.3.20",
+    "@types/react-dom": "^18.3.6",
+    "@types/three": "^0.175.0",
+    "@vitejs/plugin-react": "^4.3.4",
+    "docx": "^9.5.0",
+    "typescript": "^5.8.3",
+    "vite": "^6.2.5"
   }
 }

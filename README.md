@@ -313,17 +313,26 @@ node scripts/generate-project-docs.mjs
 - Rust stable + Node.js 20+ (development)
 - GeoLite2-City `.mmdb` (MaxMind free account; see license)
 
-### Development (after scaffold)
+### Development
 
 ```bash
 # install frontend deps
 npm install
 
-# run Tauri dev (from project root)
+# desktop app (recommended)
 npm run tauri dev
+
+# UI only in browser (demo traffic, no OS capture)
+npm run dev
 ```
 
-> **Note:** Application source scaffold (Phase 0) follows documentation baseline. Capture features will not work until Phases 2–4 are implemented and Npcap is installed.
+### Modes at runtime
+
+| Mode | When |
+|------|------|
+| **Demo** | Settings → Demo mode, or browser-only `npm run dev` |
+| **Connections (degraded)** | Default live path: Windows TCP table + process names + geo |
+| **Capture-ready** | Admin + Npcap present (status flags surface this) |
 
 ### End-user prerequisites
 
@@ -405,10 +414,14 @@ Post-v1 ideas: flow history, first-class degraded mode, PCAP export, multi-platf
 | Area | Status |
 |------|--------|
 | Product vision | ✅ Locked |
-| Corporate documentation | ✅ Baseline complete |
+| Corporate documentation (10 docs + exports) | ✅ Complete |
 | README / architecture diagrams | ✅ Complete |
-| App scaffold (Tauri/React) | ⏳ Next (Phase 0) |
-| Capture / globe integration | ⏳ Planned |
+| App scaffold (Tauri 2 + React + TS) | ✅ Complete |
+| 3D globe dashboard UI | ✅ Complete |
+| Connection-table engine + process map | ✅ Complete |
+| Geo enrich (mmdb + HTTP fallback) | ✅ Complete |
+| Demo mode + first-run wizard + settings | ✅ Complete |
+| Npcap full packet path | ⚙️ Detected/flagged; connection-table + rates primary in v1 runtime |
 
 ---
 
